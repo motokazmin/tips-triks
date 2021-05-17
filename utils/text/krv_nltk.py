@@ -3,11 +3,11 @@ import pymorphy2
 import networkx as nx
 from wiki_ru_wordnet import WikiWordnet
 
-// lemmatize_normalize: разворачивает предложения в одно, нормализует слова. Может заменять
-// человеческие имена на пол. Возможно применить фильтр по частям речи
-// include_part_speech - список частей речи, которые учитываются в результате
-// names_to_gender - преобразовывать имена в пол или нет.
-// save_sent - сохранить предложения или нет.
+# lemmatize_normalize: разворачивает предложения в одно, нормализует слова. Может заменять
+# человеческие имена на пол. Возможно применить фильтр по частям речи
+# include_part_speech - список частей речи, которые учитываются в результате
+# names_to_gender - преобразовывать имена в пол или нет.
+# save_sent - сохранить предложения или нет.
 def lemmatize_normalize(text, morph, include_part_speech = ['NOUN', 'VERB', 'ADJF'], names_to_gender = True, save_sent = False):
   s = ''
   for sent in sent_tokenize(text):
@@ -25,7 +25,7 @@ def lemmatize_normalize(text, morph, include_part_speech = ['NOUN', 'VERB', 'ADJ
 
   return s
 
-// get_synsets_graph: конструирует словарь синонимов, заменяя группу одним из значений. Также может возвратить ненаправленный граф синонимов.
+# get_synsets_graph: конструирует словарь синонимов, заменяя группу одним из значений. Также может возвратить ненаправленный граф синонимов.
 def get_synsets_dict(texts, return_graph = True):
   wikiwordnet = WikiWordnet()
   G=nx.Graph()
