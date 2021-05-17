@@ -31,4 +31,6 @@ for i in some:
 df = pd.DataFrame(df)
 
 
-
+HOWTO import from local directory:
+import sys
+sys.path.append('your path')

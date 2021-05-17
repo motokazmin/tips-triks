@@ -98,3 +98,19 @@ def compare_features_two_index(df, label, idx, val1, val2, oper, drop_nsymbol, l
         return names1.difference(names2)
     elif oper == 'right':
         return names2.difference(names1)
+
+def compare_features_all_with_one_index(df, label, idx, val1, oper, drop_nsymbol, lower_case = False, unique = False):
+    names1 = set([*get_texts(df[df[idx] == val1], label, reset_index = False, drop_nsymbol = drop_nsymbol,
+                      unique = unique, lower_case = lower_case)])
+    names2 = set([*get_texts(df[df[idx] != val1], label, reset_index = False, drop_nsymbol = drop_nsymbol,
+                      unique = unique, lower_case = lower_case)])
+
+    if oper =='|':
+        return names1|names2
+    elif oper == '&':
+        return names1&names2
+    elif oper == 'left':
+        return names1.difference(names2)
+    elif oper == 'right':
+        return names2.difference(names1)
+
